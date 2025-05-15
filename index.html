@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Dream Chaser</title>
   <style>
-    /* Basic Reset & Fonts */
+    /* তোমার দেয়া CSS কোডের প্রথম অংশ */
     * {
       box-sizing: border-box;
       scroll-behavior: smooth;
@@ -21,7 +21,6 @@
       color: inherit;
       text-decoration: none;
     }
-
     /* Preloader */
     #preloader {
       position: fixed;
@@ -46,7 +45,6 @@
       0% { transform: rotate(0deg);}
       100% { transform: rotate(360deg);}
     }
-
     /* Header */
     header {
       text-align: center;
@@ -70,7 +68,6 @@
       0%, 100% {opacity: 1;}
       50% {opacity: 0.3;}
     }
-
     /* Profile */
     .profile {
       text-align: center;
@@ -97,7 +94,6 @@
     .profile button:hover {
       background: #365899;
     }
-
     /* Quote */
     .quote-box {
       max-width: 600px;
@@ -109,7 +105,6 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.6);
       font-style: italic;
     }
-
     /* Date, Time, Weather */
     .info-box {
       margin: 15px auto;
@@ -117,16 +112,22 @@
       color: #ffeb3b;
       max-width: 320px;
       user-select: none;
+      text-align: center;
     }
-
     /* Footer */
     footer {
       margin-top: 60px;
       font-size: 1.2em;
       animation: rainbow 3s linear infinite, blink 1s infinite;
       user-select: none;
+      text-align: center;
+      padding: 15px 0;
+      background: rgba(0,0,0,0.3);
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      left: 0;
     }
-
     /* Typing Effect */
     .typing-text {
       font-size: 1.5em;
@@ -136,8 +137,8 @@
       border-right: 3px solid white;
       white-space: nowrap;
       overflow: hidden;
+      text-align: center;
     }
-
     /* About Me */
     #about {
       max-width: 700px;
@@ -148,7 +149,6 @@
       font-size: 1.2em;
       box-shadow: 0 0 15px rgba(0,0,0,0.6);
     }
-
     /* Dark Mode */
     .dark-mode {
       background: linear-gradient(to right, #121212, #222222, #333333);
@@ -167,7 +167,6 @@
     .dark-mode .profile button:hover {
       background: #155ab6;
     }
-
     /* Dark Mode Toggle */
     #darkModeToggle {
       position: fixed;
@@ -187,7 +186,6 @@
     #darkModeToggle:hover {
       background: #666;
     }
-
     /* Contact Form */
     #contact {
       max-width: 700px;
@@ -233,7 +231,6 @@
     #contact button:hover {
       background: #365899;
     }
-
     /* Testimonials */
     #testimonials {
       max-width: 700px;
@@ -268,7 +265,6 @@
       color: #ffeb3b;
       text-align: right;
     }
-
     /* Gallery */
     #gallery {
       max-width: 900px;
@@ -288,7 +284,6 @@
     #gallery img:hover {
       transform: scale(1.05);
     }
-
     /* Lightbox */
     #lightbox {
       position: fixed;
@@ -314,7 +309,6 @@
       visibility: visible;
       opacity: 1;
     }
-
     /* Skills */
     #skills {
       max-width: 700px;
@@ -339,3 +333,90 @@
       overflow: hidden;
       height: 20px;
     }
+    .skill-level {
+      height: 100%;
+      background: #4267B2;
+      width: 0;
+      transition: width 1.5s ease-in-out;
+    }
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      background: #4267B2;
+      border: none;
+      color: white;
+      padding: 12px 16px;
+      font-size: 1.2em;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(66,103,178,0.7);
+      display: none;
+      z-index: 1100;
+      user-select: none;
+      transition: background 0.3s;
+    }
+    #backToTop:hover {
+      background: #365899;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle" aria-label="Toggle Dark Mode">🌙</button>
+
+  <header>
+    <h1 class="rainbow-text">The Dream Chaser</h1>
+  </header>
+
+  <!-- Profile -->
+  <div class="profile">
+    <img src="masud.jpg" alt="Masud Rana" />
+    <br />
+    <button onclick="window.open('https://www.facebook.com/profile.php?id=100078423821878', '_blank')">Facebook Profile</button>
+  </div>
+
+  <!-- Typing Effect -->
+  <div class="typing-text" id="typing"></div>
+
+  <!-- Quote -->
+  <div class="quote-box" id="quote">Loading quote...</div>
+
+  <!-- Date, Time, Weather -->
+  <div class="info-box" id="dateTimeWeather"></div>
+
+  <!-- About Me -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi! I'm Masud Rana, a passionate developer and content creator. I love making websites and tutorials to help others learn. Welcome to my website!</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skill">
+      <div class="skill-name">HTML</div>
+      <div class="skill-bar"><div class="skill-level" data-level="90%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">CSS</div>
+      <div class="skill-bar"><div class="skill-level" data-level="85%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-bar"><div class="skill-level" data-level="80%"></div></div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial">
+      The Dream Chaser is truly inspiring and helpful
