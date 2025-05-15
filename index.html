@@ -53,20 +53,6 @@
   cursor: pointer;
 }
 
-iframe {
-  margin-top: 30px;
-  width: 90%;
-  height: 600px;
-  border: none;
-  border-radius: 10px;
-}
-
-.note {
-  margin: 20px;
-  font-style: italic;
-  color: #ccc;
-}
-
 .loader {
   border: 8px solid #f3f3f3;
   border-top: 8px solid #3498db;
@@ -82,6 +68,28 @@ iframe {
   100% { transform: rotate(360deg); }
 }
 
+.quote-box {
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  max-width: 600px;
+  font-size: 1.2em;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.time-box, .date-box, .weather-box {
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: #ffeb3b;
+}
+
+.footer {
+  margin-top: 50px;
+  font-size: 1.2em;
+  animation: rainbow 3s linear infinite, blink 1s infinite;
+}
+
   </style>
 </head>
 <body>
@@ -89,6 +97,36 @@ iframe {
     <img src="masud.jpg" alt="Masud Rana">
     <br>
     <button class="button" onclick="window.open('https://www.facebook.com/profile.php?id=100078423821878', '_blank')">Visit Facebook</button>
-  </div>  <div class="loader"></div>  <iframe src="https://huggingface.co/spaces/stabilityai/stable-diffusion" loading="lazy"></iframe>  <div class="note">* ছবিটি জেনারেট হওয়ার পর, ডাউনলোড করে নিতে ভুলবেন না।</div>
-</body>
+  </div>  <div class="loader"></div>  <div class="quote-box">
+    "জীবন বড়, কিছু করে দেখাও! প্রতিদিন শেখো, প্রতিদিন এগিয়ে যাও। তুমি পারবে, কারণ তুমি একজন স্বপ্নবাজ।"
+  </div>  <div class="date-box" id="dateBox"></div>
+  <div class="time-box" id="timeBox"></div>
+  <div class="weather-box" id="weatherBox">Loading weather...</div>  <div class="footer">Developer By Masud Rana</div>  <script>
+    function updateTime() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById('timeBox').textContent = 'Current Time: ' + timeString;
+    }
+
+    function updateDate() {
+      const now = new Date();
+      const dateString = now.toLocaleDateString();
+      document.getElementById('dateBox').textContent = 'Today's Date: ' + dateString;
+    }
+
+    async function getWeather() {
+      try {
+        const response = await fetch('https://wttr.in/?format=1');
+        const weather = await response.text();
+        document.getElementById('weatherBox').textContent = 'Weather: ' + weather;
+      } catch (error) {
+        document.getElementById('weatherBox').textContent = 'Weather info unavailable';
+      }
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
+    updateDate();
+    getWeather();
+  </script></body>
 </html>
